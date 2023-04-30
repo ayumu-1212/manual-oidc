@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  client:
+    build: ./services/client/
+    volumes:
+      - ./services/client/src/:/usr/local/src/
+    working_dir: /usr/local/src
+    tty: true
+    container_name: manual-oidc_client
+    ports:
+      - 3000:3000
+
+  oidc:
+    build: ./services/oidc/
+    volumes:
+      - ./services/oidc/src/:/usr/local/src/
+    working_dir: /usr/local/src
+    tty: true
+    container_name: manual-oidc_oidc
+    ports:
+      - 8080:80
